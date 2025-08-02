@@ -559,7 +559,7 @@ class WhatsAppChatReader {
         container.innerHTML = `
             <div class="loading">
                 <div class="spinner"></div>
-                Processing chat file...
+                <div class="loading-text">Processing chat file...</div>
             </div>
         `;
     }
