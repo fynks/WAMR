@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111b21">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
+    <title>WhatsApp Chat Reader</title>
+    <link rel="stylesheet" href="assets/css/styles-min.css">
+    <script src="assets/js/app-min.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+                <path d="M9 10a0.5 .5 0 0 0 1 0v-1a0.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 .5 0 0 0 0 -1h-1a0.5 .5 0 0 0 0 1"></path>
+            </svg>
+            <h1 class="header-title">WhatsApp Chat Reader</h1>
+        </div>
+        <div class="header-right">
+            <button class="icon-button" id="toggleUsersBtn" title="Toggle Participants" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M9 7m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"></path>
+                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path>
+                </svg>
+            </button>
+            <button class="icon-button" id="refreshBtn" title="Refresh" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"></path>
+                    <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Upload Section -->
+        <section class="upload-section" id="uploadSection">
+            <h2 class="upload-title">Import WhatsApp Chat</h2>
+            <p class="upload-subtitle">Select your exported WhatsApp chat .txt file to view it in a beautiful interface</p>
+            
+            <div class="file-upload">
+                <input type="file" id="fileInput" class="file-upload-input" accept=".txt">
+                <label for="fileInput" class="file-upload-label">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                        <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <path d="M12 11v6"></path>
+                        <path d="M9.5 13.5 12 11l2.5 2.5"></path>
+                    </svg>
+                    Choose File
+                </label>
+            </div>
+            
+            <div id="fileInfo" class="hidden">
+                <p id="fileName" class="upload-subtitle"></p>
+            </div>
+        </section>
+
+        <!-- Chat Controls -->
+        <section class="chat-controls" id="chatControls">
+            <div class="controls-row">
+                <div class="control-group">
+                    <label class="control-label" for="activeUserSelect">Active User Perspective</label>
+                    <select id="activeUserSelect" class="select-input">
+                        <option value="">All users</option>
+                    </select>
+                </div>
+                <div class="chat-stats">
+                    <span id="messageCount">0 messages loaded</span>
+                    <span id="userCount">0 users</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section class="users-section" id="usersSection">
+            <h3 class="users-title">Conversation Participants</h3>
+            <div class="users-grid" id="usersGrid">
+                <!-- Users will be populated here -->
+            </div>
+        </section>
+
+        <!-- Chat Container -->
+        <section class="chat-container" id="chatContainer">
+            <div class="chat-messages" id="chatMessages">
+                <!-- Demo content -->
+                <div class="date-separator">
+                    <div class="date-badge">Today</div>
+                </div>
+                <div class="message incoming">
+                    <div class="message-bubble">
+                        <div class="message-header">
+                            <span class="message-sender">Demo User</span>
+                        </div>
+                        <div class="message-content">Upload a WhatsApp chat export file to see your conversations here!</div>
+                        <div class="message-time">12:00 PM</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

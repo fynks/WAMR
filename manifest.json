@@ -1,0 +1,31 @@
+{
+    "name": "WhatsApp Chat Reader",
+    "short_name": "Chat Reader",
+    "description": "A modern web application for viewing exported WhatsApp chat files",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#111b21",
+    "theme_color": "#00a884",
+    "orientation": "portrait-primary",
+    "categories": ["productivity", "utilities"],
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "16x16 32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "favicon.svg",
+            "sizes": "1280x720",
+            "type": "image/svg+xml",
+            "form_factor": "wide"
+        }
+    ]
+}
